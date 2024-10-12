@@ -7,6 +7,14 @@
 }
 
 body {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
   font-family: "Open Sans Condensed", sans-serif;
+  border: 1px black solid;
+
+  * {
+    flex-grow: 1;
+  }
 }
