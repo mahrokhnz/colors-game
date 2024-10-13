@@ -15,7 +15,7 @@ function GameBoard({matrix, board, onClickHandler}: GameBoardProps) {
     }
 
   return (
-      <div className='boardWrapper' style={{gridTemplateRows: `repeat(${board.row}, auto)`}}>
+      <div className='boardWrapper' style={{aspectRatio: `${board.column}/${board.row}`, gridTemplateRows: `repeat(${board.row}, auto)`}}>
           {matrix?.map((row, rowIndex) => (
               <div className='boardRow' key={rowIndex + 1}>
                   {row.map((item, colIndex) => (

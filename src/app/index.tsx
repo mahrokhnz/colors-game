@@ -1,11 +1,15 @@
 import './index.css';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import GameBoard from "./steps/game_board";
 import StartStep from "src/app/steps/start_step";
+import ModeStep from "src/app/steps/start_step";
 
-//TODO: prettier, eslint
+//TODO: add level and lives
+//TODO: what happen when wrong click
 //TODO: add types instead of any
+//TODO: prettier, eslint
 //TODO: check github pages
+//TODO: write document
 
 let basicShade = 78
 function ColorsGame() {
@@ -28,22 +32,19 @@ function ColorsGame() {
         matrix[rowIndex][colIndex] = {color: `${matrixColor}${basicShade + level}`, type: 'goal'}
     }
 
-    const matrixGenerator = () => {
+    const matrixGenerator = (boardMatrix = board) => {
         const matrixColor = randomColorGenerator()
-        const matrix = Array(board.row).fill({color: matrixColor, type: 'normal'}).map(() => Array(board.column).fill({color: matrixColor, type: 'normal'}));
+        const matrix = Array(boardMatrix.row).fill({color: matrixColor, type: 'normal'}).map(() => Array(boardMatrix.column).fill({color: matrixColor, type: 'normal'}));
 
         paintGoal(matrix, matrixColor)
 
         setBoardMatrix(matrix)
     }
 
-    useEffect(() => {
-        matrixGenerator()
-    }, [])
-
-    const clickHandler = (type: string) => {
+    const clickOnMatrixHandler = (type: string) => {
         if (type === 'goal' && level <= 21) {
             setLevel(level + 1)
+
 
             if (level%3 === 0) {
                 setBoard({
@@ -58,21 +59,28 @@ function ColorsGame() {
         }
     }
 
+    const clickOnButtonHandler = () => {
+        setLevel(1)
+        setLives(5)
+
+        setBoard({
+            row: 3,
+            column: 4
+        })
+
+        matrixGenerator({
+            row: 3,
+            column: 4
+        })
+    }
+
   return (
-    <main className="colorsGame" style={{aspectRatio: `${board.column}/${board.row}`}}>
-        {lives > 0 ? (
-            <>
-                {level === 0 ? (
-                    <StartStep level={level} setLevel={setLevel}/>
-                ) : level === 22 ? (
-                    <span>bye</span>
-                ) : (
-                    <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickHandler} />
-                )}
-            </>
+    <main className="colorsGame">
+        {lives > 0 && level > 0 && level < 22 ? (
+            <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickOnMatrixHandler} />
         ) : (
-            <span>game over</span>
-            )}
+            <ModeStep mode={lives === 0 ? 'over' : level === 0 ? 'start' : 'end'} onClickHandler={clickOnButtonHandler}/>
+        )}
     </main>
   );
 }
