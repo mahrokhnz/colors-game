@@ -1,0 +1,15 @@
+.boardWrapper {
+  display: grid;
+  gap: 0.1rem;
+}
+
+.boardWrapper .boardRow {
+  display: flex;
+  gap: 0.1rem;
+}
+
+.boardWrapper .boardCol {
+  display: flex;
+  gap: 0.1rem;
+  cursor: pointer;
+}
