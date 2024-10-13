@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import ColorsGame from '/app/index.tsx';
 import './index.css';
+import 'src/extra/icons.font'
 
 export default function App() {
   return (

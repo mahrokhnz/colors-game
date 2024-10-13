@@ -1,14 +1,17 @@
 .boardWrapper {
+  flex-grow: 1;
   display: grid;
   gap: 0.1rem;
 }
 
 .boardWrapper .boardRow {
+  flex-grow: 1;
   display: flex;
   gap: 0.1rem;
 }
 
 .boardWrapper .boardCol {
+  flex-grow: 1;
   display: flex;
   gap: 0.1rem;
   cursor: pointer;

@@ -1,6 +1,7 @@
 import './index.css';
 import React, {useEffect, useState} from 'react';
-import GameBoard from "../components";
+import GameBoard from "./steps/game_board";
+import StartStep from "src/app/steps/start_step";
 
 //TODO: prettier, eslint
 //TODO: add types instead of any
@@ -8,7 +9,7 @@ import GameBoard from "../components";
 
 let basicShade = 78
 function ColorsGame() {
-    const [level, setLevel] = useState<number>(1)
+    const [level, setLevel] = useState<number>(0)
     const [lives, setLives] = useState<number>(5)
     const [board, setBoard] = useState<Record<string, number>>({
         row: 3,
@@ -59,13 +60,19 @@ function ColorsGame() {
 
   return (
     <main className="colorsGame" style={{aspectRatio: `${board.column}/${board.row}`}}>
-        {level === 0 ? (
-            <span>hi</span>
-        ) : level === 22 ? (
-            <span>bye</span>
+        {lives > 0 ? (
+            <>
+                {level === 0 ? (
+                    <StartStep level={level} setLevel={setLevel}/>
+                ) : level === 22 ? (
+                    <span>bye</span>
+                ) : (
+                    <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickHandler} />
+                )}
+            </>
         ) : (
-            <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickHandler} />
-        )}
+            <span>game over</span>
+            )}
     </main>
   );
 }
