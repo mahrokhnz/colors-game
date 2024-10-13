@@ -8,6 +8,7 @@
   max-width: 50rem;
   padding: 1.2rem;
   position: relative;
+  aspect-ratio: 4/3;
 }
 
 .stepWrapper .backgroundImage {
@@ -24,30 +25,45 @@
 .stepWrapper .startButton {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
-  flex-grow: 0;
   width: 8rem;
   height: 2rem;
   outline: none;
   border: none;
   border-radius: 1rem;
+  font-size: 0.8rem;
   z-index: 3;
   background-color: blue;
   color: #fff;
   cursor: pointer;
 }
 
-.stepWrapper .title {
-  flex-grow: 0;
-  font-family: Londrina Sketch;
-  font-size: 2rem;
+.stepWrapper .contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
   z-index: 3;
 }
 
+.stepWrapper .contentWrapper .title {
+  font-family: Londrina Sketch;
+  font-size: 2rem;
+}
+
+.stepWrapper .contentWrapper .description {
+  font-size: 1rem;
+  text-align: center;
+}
+
 @media only screen and (min-width: 400px) {
-  .stepWrapper .title {
+  .stepWrapper .contentWrapper .title {
     font-size: 2.5rem;
+  }
+
+  .stepWrapper .contentWrapper .description {
+    font-size: 1.5rem;
   }
 }
 
@@ -56,8 +72,12 @@
     padding: 2.5rem;
   }
 
-  .stepWrapper .title {
+  .stepWrapper .contentWrapper .title {
     font-size: 3rem;
+  }
+
+  .stepWrapper .contentWrapper .description {
+    font-size: 2rem;
   }
 
   .stepWrapper .startButton {
@@ -73,8 +93,12 @@
     padding: 3.5rem;
   }
 
-  .stepWrapper .title {
+  .stepWrapper .contentWrapper .title {
     font-size: 4rem;
+  }
+
+  .stepWrapper .contentWrapper .description {
+    font-size: 3rem;
   }
 
   .stepWrapper .startButton {
@@ -89,7 +113,11 @@
     padding: 4.5rem;
   }
 
-  .stepWrapper .title {
+  .stepWrapper .contentWrapper .title {
     font-size: 5rem;
+  }
+
+  .stepWrapper .contentWrapper .description {
+    font-size: 4rem;
   }
 }

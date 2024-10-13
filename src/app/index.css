@@ -5,3 +5,14 @@
   margin: 1rem;
   max-width: 50rem;
 }
+
+.gameInfo {
+  display: flex;
+  gap: 5rem;
+  position: absolute;
+  top: 6rem;
+}
+
+.gameInfo .info {
+  font-size: 1.5rem;
+}
