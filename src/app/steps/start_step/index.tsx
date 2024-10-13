@@ -9,6 +9,7 @@ interface ModeStepProps {
 }
 
 function ModeStep({ mode, onClickHandler }: ModeStepProps) {
+  // define each mode content
   const context = useMemo(() => {
     if (mode === "start") {
       return {
@@ -17,7 +18,7 @@ function ModeStep({ mode, onClickHandler }: ModeStepProps) {
       };
     } else if (mode === "end") {
       return {
-        description: `Congrates, You've finished it successfully`,
+        description: `Congrates, You've finished it successfully!`,
         button: "Start Over",
       };
     } else if (mode === "over") {

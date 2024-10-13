@@ -14,6 +14,7 @@ function GameBoard({matrix, board, onClickHandler}: GameBoardProps) {
         }
     }
 
+    // create ui of the game
     return (
         <div className='boardWrapper'
              style={{aspectRatio: `${board.column}/${board.row}`, gridTemplateRows: `repeat(${board.row}, auto)`}}>
