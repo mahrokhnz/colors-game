@@ -1,15 +1,11 @@
 import './index.css';
 import React, {useState} from 'react';
 import GameBoard from "./steps/game_board";
-import StartStep from "src/app/steps/start_step";
 import ModeStep from "src/app/steps/start_step";
 
-//TODO: add level and lives
-//TODO: what happen when wrong click
-//TODO: add types instead of any
-//TODO: prettier, eslint
 //TODO: check github pages
 //TODO: write document
+//TODO: build
 
 let basicShade = 78
 function ColorsGame() {
@@ -19,24 +15,24 @@ function ColorsGame() {
         row: 3,
         column: 4,
     })
-    const [boardMatrix, setBoardMatrix] = useState(null as any)
+    const [boardMatrix, setBoardMatrix] = useState(null)
 
     const randomColorGenerator = () => {
         return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')
     }
 
-    const paintGoal = (matrix, matrixColor: string) => {
+    const paintGoal = (matrix, matrixColor: string, startLevel) => {
         const rowIndex = Math.floor(Math.random() * matrix.length)
         const colIndex = Math.floor(Math.random() * matrix[rowIndex].length)
 
-        matrix[rowIndex][colIndex] = {color: `${matrixColor}${basicShade + level}`, type: 'goal'}
+        matrix[rowIndex][colIndex] = {color: `${matrixColor}${basicShade + startLevel + 1}`, type: 'goal'}
     }
 
-    const matrixGenerator = (boardMatrix = board) => {
+    const matrixGenerator = (boardMatrix = board, startLevel = level) => {
         const matrixColor = randomColorGenerator()
         const matrix = Array(boardMatrix.row).fill({color: matrixColor, type: 'normal'}).map(() => Array(boardMatrix.column).fill({color: matrixColor, type: 'normal'}));
 
-        paintGoal(matrix, matrixColor)
+        paintGoal(matrix, matrixColor, startLevel)
 
         setBoardMatrix(matrix)
     }
@@ -44,7 +40,6 @@ function ColorsGame() {
     const clickOnMatrixHandler = (type: string) => {
         if (type === 'goal' && level <= 21) {
             setLevel(level + 1)
-
 
             if (level%3 === 0) {
                 setBoard({
@@ -71,13 +66,25 @@ function ColorsGame() {
         matrixGenerator({
             row: 3,
             column: 4
-        })
+        }, 1)
     }
 
   return (
     <main className="colorsGame">
         {lives > 0 && level > 0 && level < 22 ? (
-            <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickOnMatrixHandler} />
+           <>
+               <div className='gameInfo'>
+                   <span className='info'>
+                       <b>Level:</b> {' '}
+                       {level}
+                   </span>
+                   <span className='info'>
+                       <b>Lives:</b> {' '}
+                       {lives}
+                   </span>
+               </div>
+               <GameBoard matrix={boardMatrix} board={board} onClickHandler={clickOnMatrixHandler} />
+           </>
         ) : (
             <ModeStep mode={lives === 0 ? 'over' : level === 0 ? 'start' : 'end'} onClickHandler={clickOnButtonHandler}/>
         )}

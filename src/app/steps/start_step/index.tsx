@@ -36,7 +36,8 @@ function ModeStep({mode, onClickHandler}: ModeStepProps) {
 
     return (
         <div className='stepWrapper'>
-            <img className='backgroundImage' loading='lazy' src="../../../assets/images/rainbow.jpg" alt="Rainbow Image"/>
+            <img className='backgroundImage' loading='lazy' src="../../../assets/images/rainbow.jpg"
+                 alt="Rainbow Image"/>
             <div className='contentWrapper'>
                 <h1 className='title'>Colors Game</h1>
                 <span className='description'>{context.description}</span>
