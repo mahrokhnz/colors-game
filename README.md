@@ -32,6 +32,12 @@ Build project
   npm run build
 ```
 
+Deploy project
+
+```bash
+  npm run deploy
+```
+
 
 ## Contact
 
