@@ -13,8 +13,8 @@ body {
   height: 100vh;
   font-family: "Open Sans Condensed", sans-serif;
   border: 1px black solid;
+}
 
-  * {
-    flex-grow: 1;
-  }
+body * {
+  flex-grow: 1;
 }

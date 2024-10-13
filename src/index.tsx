@@ -1,7 +1,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route } from 'react-router-dom';
-import ColorsGame from './app';
+import ColorsGame from '/app/index.tsx';
 import './index.css';
 
 export default function App() {

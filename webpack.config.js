@@ -1,69 +1,48 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
-const root = path.resolve(__dirname, '../');
-
 module.exports = {
-  entry: './src/index.jsx',
-  mode: "development",
+  entry: './src/index.tsx',
+  mode: 'development',
   devtool: 'source-map',
 
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'docs'),
     clean: true,
   },
 
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx', '.*'],
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack App",
-      template: path.resolve(__dirname, './index.html'),
-      inject: 'body',
+      title: 'Mahrokh Nabizadeh | Colors Game',
+      template: path.resolve(__dirname, './index.html')
     }),
+
     new MiniCssExtractPlugin(),
-    // new CopyPlugin({
-    //   patterns: [
-    //     {
-    //       from: 'public',
-    //       to: '.'
-    //     }
-    //   ],
-    // }),
+
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src',
+          to: '.'
+        }
+      ],
+    }),
   ],
-
-  optimization: {
-    minimize: false,
-    minimizer: [new TerserPlugin({
-      extractComments: false,
-    })],
-  },
-
-  devServer: {
-    static: {
-      directory: path.resolve(root, 'public'),
-      publicPath: '/',
-    },
-    client: {
-      overlay: false,
-    },
-    allowedHosts: 'all',
-    historyApiFallback: true,
-    compress: true,
-    host: '0.0.0.0',
-    port: 8080,
-    hot: true,
-    liveReload: false,
-  },
 
   module: {
     rules: [
+      {
+        test: /\.css$/i,
+        use: [ 'style-loader', 'css-loader' ]
+      },
+
       {
         test: /\.[tj]sx?$/,
         exclude: /node_modules/,
@@ -74,35 +53,30 @@ module.exports = {
           }
         }
       },
+
       {
-        test: /\.css$/i,
-        use: [ 'style-loader', 'css-loader' ]
-        // use: [
-        //   MiniCssExtractPlugin.loader,
-        //   {
-        //     loader: 'css-loader',
-        //     options: {
-        //       modules: {
-        //         localIdentName: '[local]_[hash:base64:4]'
-        //       }
-        //     }
-        //   }
-        // ]
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
       },
-      {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
-        generator: {
-          filename: 'assets/images/[contenthash][ext]'
-        }
-      },
+
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
-        generator: {
-          filename: 'assets/fonts/[contenthash][ext]',
-        },
       },
+
+      {
+        test: /\.(png|svg|jpg|gif|pdf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'assets/images'
+            }
+          }
+        ]
+      }
     ],
   },
 };
