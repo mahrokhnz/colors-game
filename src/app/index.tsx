@@ -5,7 +5,6 @@ import GameBoard from "../components";
 //TODO: prettier, eslint
 //TODO: add types instead of any
 //TODO: check github pages
-//TODO: sizes
 
 let basicShade = 78
 function ColorsGame() {
@@ -24,8 +23,6 @@ function ColorsGame() {
     const paintGoal = (matrix, matrixColor: string) => {
         const rowIndex = Math.floor(Math.random() * matrix.length)
         const colIndex = Math.floor(Math.random() * matrix[rowIndex].length)
-
-        console.log(basicShade + level)
 
         matrix[rowIndex][colIndex] = {color: `${matrixColor}${basicShade + level}`, type: 'goal'}
     }
@@ -61,7 +58,7 @@ function ColorsGame() {
     }
 
   return (
-    <main className="colorsGame">
+    <main className="colorsGame" style={{aspectRatio: `${board.column}/${board.row}`}}>
         {level === 0 ? (
             <span>hi</span>
         ) : level === 22 ? (

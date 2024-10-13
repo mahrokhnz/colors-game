@@ -1,7 +1,6 @@
 .boardWrapper {
   display: grid;
   gap: 0.1rem;
-  max-width: 50rem;
 }
 
 .boardWrapper .boardRow {
@@ -12,7 +11,5 @@
 .boardWrapper .boardCol {
   display: flex;
   gap: 0.1rem;
-  width: 5rem;
-  height: 5rem;
   cursor: pointer;
 }

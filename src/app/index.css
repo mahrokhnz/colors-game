@@ -1,6 +1,6 @@
 .colorsGame {
   display: flex;
   justify-content: center;
-  margin: 2rem;
-  min-height: 12rem;
+  margin: 1rem;
+  max-width: 50rem;
 }
