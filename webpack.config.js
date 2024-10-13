@@ -54,11 +54,11 @@ module.exports = {
         }
       },
 
-      {
-        test: /\.svg$/i,
-        issuer: /\.[jt]sx?$/,
-        use: ['@svgr/webpack'],
-      },
+      // {
+      //   test: /\.svg$/i,
+      //   issuer: /\.[jt]sx?$/,
+      //   use: ['@svgr/webpack'],
+      // },
 
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
@@ -66,7 +66,7 @@ module.exports = {
       },
 
       {
-        test: /\.(png|svg|jpg|gif|pdf)$/,
+        test: /\.(png|svg|jp?g|gif|pdf)$/,
         use: [
           {
             loader: 'file-loader',
