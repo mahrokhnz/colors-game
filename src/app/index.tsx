@@ -34,7 +34,7 @@ function ColorsGame() {
     };
   };
 
-  // create matrix of each level with help of board and level
+  // create matrix of each level with help of board and level and call colorGoal
   const matrixGenerator = (boardMatrix = board, startLevel = level) => {
     const matrixColor = randomColorGenerator();
     const matrix = Array(boardMatrix.row)
@@ -48,7 +48,7 @@ function ColorsGame() {
     setBoardMatrix(matrix);
   };
 
-  // event for clicking on every matrix item and deciding what happen (level up or lives down or change board row and column)
+  // event for clicking on every matrix item and deciding what happen (level up or lives down or change board by changing row and column)
   const clickOnMatrixHandler = (type: string) => {
     if (type === "goal" && level <= 21) {
       setLevel(level + 1);

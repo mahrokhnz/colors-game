@@ -3,7 +3,7 @@
 I'm Mahrokh Nabizadeh, <br />
 This is an app that I named it **Colors Game**. <br />
 This program is written by **React Library** and
-also **Typescript** is used. <br />
+also **Typescript**. <br />
 Various configurations including Webpack, Babel and TS, is added to the program.
 
 Link:

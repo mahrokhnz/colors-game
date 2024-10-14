@@ -18,12 +18,12 @@ function ModeStep({ mode, onClickHandler }: ModeStepProps) {
       };
     } else if (mode === "end") {
       return {
-        description: `Congrates, You've finished it successfully!`,
+        description: `Congrats, You've finished it successfully!`,
         button: "Start Over",
       };
     } else if (mode === "over") {
       return {
-        description: `Gameover, You're out of lives!`,
+        description: `Game-over, You're out of lives!`,
         button: "Start Over",
       };
     }
