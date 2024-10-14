@@ -20,7 +20,7 @@ module.exports = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Helya Moradi | Portfolio",
+      title: "Mahrokh Nabizadeh | Colors Game",
       template: path.resolve(__dirname, "./index.html"),
     }),
 

@@ -13,6 +13,7 @@ function ColorsGame() {
   });
   const [boardMatrix, setBoardMatrix] = useState(null);
 
+  // define a random color in each level
   const randomColorGenerator = () => {
     return (
       "#" +
@@ -22,7 +23,8 @@ function ColorsGame() {
     );
   };
 
-  const paintGoal = (matrix, matrixColor: string, startLevel) => {
+  // define a color for goal by changing opacity of random color, opacity define by a basic shade and level
+  const colorGoal = (matrix, matrixColor: string, startLevel) => {
     const rowIndex = Math.floor(Math.random() * matrix.length);
     const colIndex = Math.floor(Math.random() * matrix[rowIndex].length);
 
@@ -32,6 +34,7 @@ function ColorsGame() {
     };
   };
 
+  // create matrix of each level with help of board and level and call colorGoal
   const matrixGenerator = (boardMatrix = board, startLevel = level) => {
     const matrixColor = randomColorGenerator();
     const matrix = Array(boardMatrix.row)
@@ -40,11 +43,12 @@ function ColorsGame() {
         Array(boardMatrix.column).fill({ color: matrixColor, type: "normal" }),
       );
 
-    paintGoal(matrix, matrixColor, startLevel);
+    colorGoal(matrix, matrixColor, startLevel);
 
     setBoardMatrix(matrix);
   };
 
+  // event for clicking on every matrix item and deciding what happen (level up or lives down or change board by changing row and column)
   const clickOnMatrixHandler = (type: string) => {
     if (type === "goal" && level <= 21) {
       setLevel(level + 1);
@@ -62,6 +66,7 @@ function ColorsGame() {
     }
   };
 
+  // manage clicks on modes button and reset everything
   const clickOnButtonHandler = () => {
     setLevel(1);
     setLives(5);
@@ -71,6 +76,7 @@ function ColorsGame() {
       column: 4,
     });
 
+    // create matrix by initial values
     matrixGenerator(
       {
         row: 3,
@@ -80,6 +86,7 @@ function ColorsGame() {
     );
   };
 
+  // here we decide what should we show
   return (
     <main className="colorsGame">
       {lives > 0 && level > 0 && level < 22 ? (
