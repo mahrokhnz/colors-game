@@ -1,47 +1,53 @@
 # Colors Game
 
-I'm Mahrokh Nabizadeh, <br />
-This is an app that I named it **Colors Game**. <br />
-This program is written by **React Library** and
-also **Typescript**. <br />
-Various configurations including Webpack, Babel and TS, is added to the program.
+Welcome to the Colors Game repository! This is a fun and interactive project designed to challenge players' color recognition skills in an engaging way.
 
-Link:
+Demo:
 [Colors Game](https://mahrokhnz.github.io/colors-game/)
 
-## Run Locally
+## Features
 
-Clone the project
+- **Color Guessing Game**: Players need to identify the correct color based on a given RGB code.
+- **Dynamic Gameplay**: Randomly generates new colors for each round, keeping the game fresh and challenging.
+- **Score Tracking**: Keeps track of the player's progress and achievements.
+- **Responsive Design**: Fully functional on both desktops and mobile devices for a seamless experience.
 
-```bash
+## Built With
+
+- **React.js**
+- **Typescript**
+- **CSS3**
+
+## Installation
+
+To run the game locally, follow these steps:
+
+1. Clone the repository:
+  ```bash
   git clone git@github.com:mahrokhnz/colors-game.git
-```
+  ```
 
-Install dependencies
-
-```bash
+2. Install dependencies
+  ```bash
   npm install
-```
+  ```
 
-Start the server
-
-```bash
+3. Start the server
+  ```bash
   npm start
-```
+  ```
 
-Build project
-
-```bash
+4. Build project
+  ```bash
   npm run build
-```
+  ```
 
-Deploy project
+5. Run build of project
+  ```bash
+  npm start
+  ```
 
-```bash
+6. Deploy project
+  ```bash
   npm run deploy
-```
-
-
-## Contact
-
-For contact, email mahrokh.nz@gmail.com .
+  ```
